@@ -1,15 +1,16 @@
 import 'dotenv/config'
-import { runAgent } from './src/agent'
-import { tools } from './src/tools'
+
+import { runOpenAiLLM, runGoogleGenAiLLM } from './src/llm'
 
 const userMessage = process.argv[2]
 
 if (!userMessage) {
-  console.error('Please provide a message')
+  console.error('Please provide a message as a command line argument.')
   process.exit(1)
 }
 
-const messages = await runAgent({
-  userMessage,
-  tools,
-})
+const openAiResponse = await runOpenAiLLM({ userMessage })
+console.log('OpenAI Response:', openAiResponse)
+
+const googleGenAiResponse = await runGoogleGenAiLLM({ userMessage })
+console.log('Google GenAI Response:', googleGenAiResponse)

@@ -1,6 +1,6 @@
 import 'dotenv/config'
-
 import { runOpenAiLLM, runGoogleGenAiLLM } from './src/llm'
+import { getMessages } from './src/memory'
 
 const userMessage = process.argv[2]
 
@@ -9,8 +9,12 @@ if (!userMessage) {
   process.exit(1)
 }
 
-const openAiResponse = await runOpenAiLLM({ userMessage })
+const messages = await getMessages()
+
+const openAiResponse = await runOpenAiLLM({ 
+  messages
+ })
 console.log('OpenAI Response:', openAiResponse)
 
-const googleGenAiResponse = await runGoogleGenAiLLM({ userMessage })
-console.log('Google GenAI Response:', googleGenAiResponse)
+// const googleGenAiResponse = await runGoogleGenAiLLM({ messages })
+// console.log('Google GenAI Response:', googleGenAiResponse)

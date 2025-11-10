@@ -1,3 +1,37 @@
 {
-  "messages": []
+  "messages": [
+    {
+      "role": "user",
+      "content": "what is the weather",
+      "id": "10916534-a00a-4f50-92e8-b91e0b791532",
+      "createdAt": "2025-11-10T20:45:50.525Z"
+    },
+    {
+      "role": "user",
+      "content": "what is the weather",
+      "id": "9f9b8f48-6721-406f-9d8f-adfe4b808d6e",
+      "createdAt": "2025-11-10T20:49:37.872Z"
+    },
+    {
+      "role": "assistant",
+      "content": "Could you please specify the location for which you would like to know the weather?",
+      "refusal": null,
+      "annotations": [],
+      "id": "c7152068-1a01-429a-bbf7-6d780844a800",
+      "createdAt": "2025-11-10T20:49:39.793Z"
+    },
+    {
+      "role": "user",
+      "content": "what is the weather in breaux bridge, la",
+      "id": "becee92e-6cb9-4bbf-96ae-5574ddebcf82",
+      "createdAt": "2025-11-10T20:49:59.805Z"
+    },
+    {
+      "role": "tool",
+      "content": "hot, 90deg",
+      "tool_call_id": "call_yQzhpEHaG2o3CeUaATDHWmjJ",
+      "id": "ddf55df0-e1f8-437b-8a11-e4d6e113298d",
+      "createdAt": "2025-11-10T20:50:02.848Z"
+    }
+  ]
 }

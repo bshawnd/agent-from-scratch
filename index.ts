@@ -1,6 +1,6 @@
 import 'dotenv/config'
-import { runOpenAiLLM, runGoogleGenAiLLM } from './src/llm'
-import { addMessages, getMessages } from './src/memory'
+import { runAgent } from './src/agent.js'
+import { z } from 'zod'
 
 const userMessage = process.argv[2]
 
@@ -9,15 +9,11 @@ if (!userMessage) {
   process.exit(1)
 }
 
-await addMessages([{ role: 'user', content: userMessage }])
-const messages = await getMessages()
+const weatherTool = {
+  name: 'get_weather',
+  parameters: z.object({})
+}
 
-const openAiResponse = await runOpenAiLLM({ 
-  messages
- })
-await addMessages([{ role: 'assistant', content: openAiResponse }])
-console.log('OpenAI Response:', openAiResponse)
+const response = await runAgent({ userMessage, tools: [weatherTool] })
 
-const googleGenAiResponse = await runGoogleGenAiLLM({ messages })
-await addMessages([{ role: 'assistant', content: googleGenAiResponse }])
-console.log('Google GenAI Response:', googleGenAiResponse)
+console.log(response)

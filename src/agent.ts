@@ -8,8 +8,8 @@ export const runAgent = async({
   tools
 }: {
   userMessage: string,
-  tools?: any[]
-}): Promise<AIMessage[]> => {
+  tools: any[]
+}) => {
   await addMessages([{ role: 'user', content: userMessage }]);
 
   const loader = showLoader('😊');
